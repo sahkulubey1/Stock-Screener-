@@ -1,0 +1,19 @@
+
+    <!-- Dropdown Container -->
+    {% if user %}
+    <div class="logout-container">
+        <div class="user-dropdown">
+            <span>{{ user['username'] }}</span>
+            <span class="dropdown-icon">▼</span>
+            <div class="dropdown-content">
+                <a href="/profile">Profile</a>
+                <a href="/history">History</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="logout-container">
+        <a href="/login" class="login-link" style="color: #ff7300; text-decoration: none; font-weight: bold;">Login</a>
+    </div>
+    {% endif %}

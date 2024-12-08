@@ -1,0 +1,99 @@
+/* MAIN */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero {
+    text-align: center;
+    background: #2b2b2b;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero form {
+    margin-bottom: 20px;
+}
+
+
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: #ff7300;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #e56200;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.alert {
+    display: none;
+    background-color: #ffdddd;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 500px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#loadingMessage {
+    display: none;
+    color: #ff7300;
+    padding-top:10px;
+    padding-bottom:20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}

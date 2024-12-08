@@ -1,0 +1,111 @@
+/* Main Title */
+h1 {
+    text-align: center; /* Ortala */
+    color: #f97316; /* Başlık rengi */
+    margin: 30px 0; /* Üst ve alt boşluk */
+    font-size: 2.5rem; /* Daha büyük başlık boyutu */
+}
+
+main{
+    margin-bottom: 100px;
+}
+
+/* Form */
+form {
+    background-color: #222; /* Koyu arka plan */
+    padding: 30px; /* İç boşluk */
+    border-radius: 10px; /* Yuvarlatılmış köşeler */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Gölgelendirme */
+    max-width: 500px; /* Maksimum genişlik */
+    margin: 0 auto; /* Ortala */
+}
+
+/* Labels */
+label {
+    display: block; /* Blok elementi olarak göster */
+    font-weight: 500; /* Yazı kalınlığı */
+    margin-bottom: 10px; /* Alt boşluk */
+    color: #f97316; /* Renk */
+}
+
+/* Inputs */
+.stock-input {
+    width: 100%; /* Tam genişlik */
+    padding: 15px; /* İç boşluk */
+    margin-bottom: 20px; /* Alt boşluk */
+    border: 1px solid #444; /* Kenar rengi */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    background-color: #333; /* Koyu arka plan */
+    color: #f4f4f4; /* Yazı rengi */
+    font-size: 1rem; /* Yazı boyutu */
+    transition: border-color 0.3s, background-color 0.3s; /* Geçiş efektleri */
+}
+
+.stock-input:focus {
+    border-color: #f97316; /* Fokuslandığında kenar rengi */
+    background-color: #444; /* Fokuslandığında arka plan rengi */
+}
+
+/* Button */
+button.runscreener {
+    width: 100%; /* Tam genişlik */
+    padding: 15px; /* İç boşluk */
+    background-color: #f97316; /* Arka plan rengi */
+    color: white; /* Yazı rengi */
+    margin-bottom:20px;
+    font-size: 1.1rem; /* Yazı boyutu */
+    border: none; /* Kenar yok */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    cursor: pointer; /* İmleç işareti */
+    transition: background-color 0.3s, transform 0.2s; /* Geçiş efektleri */
+}
+
+button.runscreener:hover {
+    background-color: #e68900; /* Hover durumunda arka plan rengi */
+    transform: translateY(-2px); /* Hover durumunda yukarı kaydır */
+}
+
+/* Progress Bar */
+#progressContainer {
+    display: none; /* Varsayılan olarak gizle */
+    margin-top: 20px; /* Üst boşluk */
+    text-align: center; /* Ortala */
+}
+
+#progressBar {
+    width: 100%; /* Tam genişlik */
+    background-color: #444; /* Arka plan rengi */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+}
+
+#progressBar div {
+    width: 0; /* Başlangıç genişliği */
+    height: 20px; /* Yükseklik */
+    background-color: #f97316; /* Renk */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    transition: width 0.5s; /* Genişlik geçişi */
+}
+
+/* Progress Text */
+#progressText {
+    margin-top: 10px; /* Üst boşluk */
+    font-size: 18px; /* Yazı boyutu */
+    color: #f4f4f4; /* Yazı rengi */
+}
+
+/* Link Styling */
+p a {
+    color: #f97316; /* Link rengi */
+    text-decoration: none; /* Alt çizgi yok */
+    transition: color 0.3s; /* Renk geçişi */
+}
+
+p a:hover {
+    color: #e68900; /* Hover durumunda renk */
+}
+
+/* Radio Buttons */
+
+.radio-group input[type="radio"] {
+    margin-right: 5px; /* Sağ boşluk */
+}

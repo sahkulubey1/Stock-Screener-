@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Screener - Adjust Indicator Weights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stockscreener.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='image/icon.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="{{ url_for('stock_search') }}"><img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="logo"></a>
+                <a href="{{ url_for('stock_search') }}" class="nav-title">Stock Screener</a>
+            </div>
+            <div class="menu-container">
+                <a href="{{ url_for('stock_search') }}" class="menu-item">Stock Search</a>
+                <a href="{{ url_for('index') }}" class="menu-item">Stock Screener</a>
+                <a href="{{ url_for('learn_more') }}" class="menu-item">Learn More</a>
+            </div>
+            {% include 'partials/logout.html' %}
+        </nav>
+    </header>
+
+<main>
+    <h1>Adjust Indicator Weights</h1>
+    <form action="/run_screener" method="POST" onsubmit="showLoadingMessage()">
+        <label>Relative Volume:</label>
+        <input type="number" class="stock-input" name="relative_volume" value="50.00" step="0.01" min="0" max="100" required>
+
+        <label>News Event:</label>
+        <input type="number" class="stock-input" name="news_event" value="50.00" step="0.01" min="0" max="100" required>
+
+        <label>Price Movement:</label>
+        <input type="number" class="stock-input" name="price_movement" value="50.00" step="0.01" min="0" max="100" required>
+
+        <label>Historical Volatility:</label>
+        <input type="number" class="stock-input" name="historical_volatility" value="50.00" step="0.01" min="0" max="100" required>
+
+        <label>Available Shares:</label>
+        <input type="number" class="stock-input" name="available_shares" value="50.00" step="0.01" min="0" max="100" required>
+
+        <label>Select Stock Universe:</label>
+        <div class="radio-group">
+            <input type="radio" name="stock_universe" value="all" checked> All U.S. Stocks<br>
+            <input type="radio" name="stock_universe" value="sp500"> S&P 500 Stocks<br><br>
+        </div>
+
+        <button type="submit" class="runscreener">Run Screener</button>
+
+        <p id="loadingMessage" style="display: none;">Retrieving stock screener results, please wait...</p>
+
+        <div id="progressContainer">
+            <div id="progressBar">
+                <div></div>
+            </div>
+            <p id="progressText">Progress: 0%</p>
+        </div>
+        <p>Or go to the <a href="{{ url_for('stock_search') }}">Stock Search</a>.</p>
+    </form>
+</main>
+
+<footer>
+    <p>© 2024 Stock Screener. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function showLoadingMessage() {
+        document.getElementById("loadingMessage").style.display = "block";
+        document.getElementById("progressContainer").style.display = "block";
+
+        const stockUniverse = document.querySelector('input[name="stock_universe"]:checked').value;
+
+        let duration;
+        if (stockUniverse === "sp500") {
+            duration = 56 * 1000;  // 55 seconds for sp500
+        } else {
+            duration = 145 * 1000;  // 2.25 minutes for all
+        }
+
+        updateProgressBar(duration);
+    }
+
+    function updateProgressBar(duration) {
+        const progressBar = document.getElementById("progressBar").firstElementChild;
+        const progressText = document.getElementById("progressText");
+        let width = 0;
+
+        const interval = setInterval(function () {
+            if (width >= 100) {
+                clearInterval(interval);
+                document.getElementById("loadingMessage").innerText = "Completed!";
+            } else {
+                width += 0.5;  // Increase by 0.5% per step
+                progressBar.style.width = width + "%";
+                progressText.innerText = "Progress: " + Math.floor(width) + "%";
+            }
+        }, duration / 200);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validate OTP</title>
+</head>
+<body>
+    <h1>Validate OTP</h1>
+    <form action="{{ url_for('validate_reset_otp_method', user_id=user_id) }}" method="POST">
+        <label for="otp">Enter OTP:</label>
+        <input type="number" name="otp" id="otp" required>
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <button type="submit">Validate OTP</button>
+    </form>
+
+    <!-- Hata Mesajını Göster -->
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <!-- Flask Flash Mesajlarını Göster -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>

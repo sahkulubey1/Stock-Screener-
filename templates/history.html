@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
+</head>
+<body>
+
+<header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="{{ url_for('stock_search') }}"><img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="logo"></a>
+                <a href="{{ url_for('stock_search') }}" class="nav-title">Stock Screener</a>
+            </div>
+            <div class="menu-container">
+                <a href="{{ url_for('stock_search') }}" class="menu-item">Stock Search</a>
+                <a href="{{ url_for('index') }}" class="menu-item">Stock Screener</a>
+                <a href="{{ url_for('learn_more') }}" class="menu-item">Learn More</a>
+            </div>
+            {% include 'partials/logout.html' %}
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>{{ user['username'] }}'s Profile</h1>
+        <h2><strong>Username:</strong> {{ user['username'] }}</h2>
+        <h2><strong>Email:</strong> {{ user.email }}</h2>
+        <h2><strong>Join Date:</strong> {{ user.created_at }}</h2>
+
+        <!-- Date Range Filter -->
+        <div class="date-range-filter">
+            <h2>Date Range Filter</h2>
+            <form method="GET" action="/history_filter" id="date-filter-form">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start_date" required>
+
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end_date" required>
+
+                <button type="submit">Filter</button>
+                <button type="button" onclick="resetFilter()">Reset</button> <!-- Reset Button -->
+            </form>
+        </div>
+
+        <h2>Indicator Weights</h2>
+
+        <!-- Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Relative Volume</th>
+                    <th>News Event</th>
+                    <th>Historical Volatility</th>
+                    <th>Available Shares</th>
+                    <th>Stock Universe</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in weights_with_results %}
+                <tr>
+                    <td>{{ item.weight['created_at'] }}</td>
+                    <td>{{ item.weight['relative_volume'] }}</td>
+                    <td>{{ item.weight['news_event'] }}</td>
+                    <td>{{ item.weight['historical_volatility'] }}</td>
+                    <td>{{ item.weight['available_shares'] }}</td>
+                    <td>{{ item.weight['stock_universe'] }}</td>
+                    <td>
+                        <button onclick="showPopup({{ loop.index0 }})">View Results</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Popup -->
+        <div class="popup-overlay" id="popup">
+            <div class="popup-content">
+                <h2>Indicator Results</h2>
+                <div id="popup-results"></div>
+                <button class="close-btn" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+      <footer>
+        <div class="footer-social">
+            <span>©2024 Stock Screener</span>
+        </div>
+    </footer>
+
+    <script>
+    function resetFilter() {
+        // Redirect to the base /history route without any query parameters
+        window.location.href = '/history';
+    }
+
+    const resultsData = {{ weights_with_results | tojson }};
+
+    function showPopup(index) {
+        const results = resultsData[index].results;
+        const resultsDiv = document.getElementById('popup-results');
+
+        // Clear previous content
+        resultsDiv.innerHTML = '';
+
+        // Populate with current results
+        results.forEach(result => {
+            resultsDiv.innerHTML += `
+                <p><strong>Ticker:</strong> ${result.ticker}</p>
+                <p><strong>Score:</strong> ${Math.round(result.score)}</p> <!-- Round score to the nearest integer -->
+                <p><strong>Market Sentiment:</strong> ${result.market_sentiment}</p>
+                <p><strong>Date:</strong> ${result.created_at}</p>
+                <hr>
+            `;
+        });
+
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+    </script>
+</body>
+</html>

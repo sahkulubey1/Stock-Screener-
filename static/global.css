@@ -1,0 +1,342 @@
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1e1e1e; /* Daha koyu arka plan */
+    color: #f4f4f4; /* Metin rengi beyaza yakın */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Arka Plan ve Doku */
+body {
+    background-color: #2c2c2c; /* Koyu antrasit arka plan */
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.2)); /* Hafif doku efekti */
+}
+
+/* Bağlantılar için stil */
+a {
+    color: #ff7300; /* Bağlantının varsayılan rengi */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    transition: color 0.3s ease; /* Renk geçişi */
+}
+
+a:hover {
+    color: #e56200; /* Üzerine gelindiğinde rengi değiştir */
+}
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, #1a1a1a, #2b2b2b);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.nav-title {
+    color: #ff7300; /* Turuncu başlık */
+    font-size: 32px; /* Daha büyük başlık boyutu */
+    font-weight: 700;
+}
+
+
+/* Logout Container */
+.logout-container {
+    position: absolute;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #333;
+    z-index: 10; /* Menü öğelerinin üstünde kalması için */
+}
+
+/* Dropdown menü stili */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    color: #ff7300;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.user-dropdown:hover {
+    color: #e56200;
+}
+
+.user-dropdown span {
+    margin-right: 10px;
+}
+
+/* Dropdown içerik */
+.dropdown-icon {
+    font-size: 1em;
+    transform: rotate(0deg); /* Varsayılan pozisyon */
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 150px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-content a {
+    color: #ff7300;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8em;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f4f8;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* İkonun döndürülmesi */
+.user-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+        /* Popup Stilleri */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content h2 {
+            margin: 0 0 20px;
+            font-size: 1.5em;
+            color: #ff7300;
+        }
+
+        .popup-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 1.5em;
+            color: #f44336;
+            cursor: pointer;
+        }
+
+        .popup-close-btn:hover {
+            color: #d32f2f;
+        }
+
+
+
+
+
+
+
+/* Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar {
+    padding: 12px 15px;
+    font-size: 16px;
+    width: 300px; /* Genişlik arttırıldı */
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-container button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #ff7300;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #e56200;
+}
+
+/* Section Styles */
+.section {
+    background-color: #1e1e1e; /* Koyu arka plan */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.section h2 {
+    color: #ff9800; /* Turuncu başlık */
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #444; /* Dark border */
+}
+
+th {
+    background-color: #333; /* Dark background for table header */
+    color: #ff9800; /* Turuncu metin */
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto; /* Footer'ı en alt kısma sabitlemek için */
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #ff9800;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.menu-container {
+    display: flex;
+    gap: 20px; /* Menü başlıkları arasındaki boşluk */
+}
+
+.menu-container a{
+    font-size: 1.2em;
+}
+
+.menu-item {
+    color: #ffffff; /* Beyaz yazı rengi */
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+    color: #ff7300; /* Hover durumda turuncu renge geç */
+}
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .logout-container {
+        position: relative; /* Sağdan sabit yerine, normal akışta yer alır */
+        top: 0;
+        right: 0;
+        font-size: 0.9em;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+
+    .user-dropdown {
+        font-size: 1em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .user-dropdown span {
+        margin-right: 5px; /* Daha az boşluk */
+    }
+
+    /* Dropdown öğeleri için daha büyük tıklama alanı */
+    .dropdown-content a {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+
+    /* Menü öğelerinin üst üste binmesini engellemek için flex düzeni */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start; /* Menü öğelerinin sola hizalanması */
+    }
+
+    .menu-container {
+        flex-direction: column;
+    }
+}

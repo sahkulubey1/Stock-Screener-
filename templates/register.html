@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Stock Screener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;  /* Dark background for the page */
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6600;  /* Orange color for the heading */
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #333;  /* Dark background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff6600;  /* Orange color for labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #ff6600;  /* Orange color when focused */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: #ff6600;  /* Orange button */
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e65c00;  /* Darker orange on hover */
+        }
+
+        p {
+            text-align: center;
+            color: #ccc;
+        }
+
+        p a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            color: #e65c00;
+        }
+
+        /* Flash message styles */
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .flashes li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: white;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .flashes .success {
+            background-color: #4CAF50; /* Green */
+            color: #fff;
+            border: 1px solid #388E3C;
+        }
+
+        .flashes .danger {
+            background-color: #f44336; /* Red */
+            color: #fff;
+            border: 1px solid #D32F2F;
+        }
+
+        .flashes .info {
+            background-color: #2196F3; /* Blue */
+            color: #fff;
+            border: 1px solid #1976D2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Register</h1>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" minlength="8" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" minlength="8" name="password" required>
+
+        <label for="password_confirmation">Confirm Password:</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Login here</a>.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Stock Screener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <style>
+        /* Genel düzenlemeler */
+
+
+        /* Arka plan görseli */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Görselin formun arkasında olmasını sağlar */
+            object-fit: cover; /* Görselin ekrana tam oturmasını sağlar */
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6600;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7); /* Yarı saydam siyah arka plan */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Form group düzenlemeleri */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Label düzenlemeleri */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff6600;
+        }
+
+        /* Input düzenlemeleri */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #ff6600;
+            outline: none;
+        }
+
+        /* Buton düzenlemeleri */
+        button {
+            width: 100%;
+            background-color: #ff6600;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Flash mesajları */
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .flashes li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: white;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .flashes .success {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .flashes .danger {
+            background-color: #f44336; /* Red */
+        }
+
+        p {
+            text-align: center;
+            color: #ccc;
+        }
+
+        p a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            color: #e65c00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Arka plan görseli eklemek için img etiketi -->
+    <img src="https://img.freepik.com/premium-photo/3d-black-chart-finance-black-background_768719-330.jpg" alt="Background Image" class="background-image" />
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Forgot Password Link -->
+    <form action="{{ url_for('forgot_password_method') }}" method="GET" style="margin-top:20px;">
+        <p><a href="{{ url_for('forgot_password_method') }}">Forgot your password?</a></p>
+    </form>
+
+    <p>Don't have an account? <a href="/register">Register here</a>.</p>
+
+</body>
+
+</html>

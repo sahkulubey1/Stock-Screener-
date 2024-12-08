@@ -1,0 +1,100 @@
+/* STOCK DETAILS */
+
+/* Divider */
+.divider {
+    border: 1px solid #444; /* Dark border */
+    margin: 10px 0; /* Margin above and below */
+}
+
+/* Main Content Area */
+main {
+    padding: 81px;
+}
+button{
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #ff7300;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Section Styles */
+.section {
+    background-color: #1e1e1e; /* Darker section background */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.section h2 {
+    color: #ff9800; /* Orange color for section titles */
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #444; /* Dark border */
+}
+
+th {
+    background-color: #333; /* Dark background for table header */
+    color: #ff9800; /* Orange text for table header */
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Image Styles */
+.chart-image {
+    max-width: 100%; /* Grafiklerin maksimum genişliğini %100 olarak ayarlayın */
+    height: auto; /* Orantılı olarak yükseklik ayarlanır */
+    margin: 20px 0; /* Üst ve alt boşluk */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hafif bir gölge efekti */
+    display: block; /* Alt alta konumlandırmak için block yap */
+}
+
+.info-link i {
+    color: orange; /* İkon rengi turuncu */
+    font-size: 1.2em; /* İkon boyutu */
+    transition: color 0.3s; /* Hover efekti */
+}
+
+.info-link:hover i {
+    color: darkorange; /* Hover durumunda daha koyu turuncu */
+}
+
+.back-button {
+    display: inline-block; /* Dışarıda bir boşluk yaratır */
+    padding: 12px 20px; /* Butonun içindeki yazı için alan */
+    background-color: #ff7300; /* Turuncu arka plan */
+    color: white; /* Beyaz yazı rengi */
+    font-size: 1rem; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    text-align: center; /* Metni ortalar */
+    text-decoration: none; /* Alt çizgi kaldırır */
+    transition: background-color 0.3s, transform 0.2s; /* Geçiş efektleri */
+    margin-top: 20px; /* Üstten boşluk */
+}
+
+.back-button:hover {
+    background-color: #e56200;
+    color: white;
+    transform: translateY(-2px); /* Yukarı hareket efekti */
+}
+
+@media (max-width: 768px) {
+    .chart-image {
+        max-width: 90%; /* Küçük ekranlarda daha küçük bir maksimum genişlik */
+    }
+}

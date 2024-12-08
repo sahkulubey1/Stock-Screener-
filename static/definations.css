@@ -1,0 +1,179 @@
+/* Başlıklar */
+h1, h2, h3, .term-container strong {
+    text-align: center; /* Yazıyı yatayda ortalar */
+    margin-bottom: 30px; /* Altına boşluk bırakır */
+    margin-top: 30px;
+    color: #ff7300; /* Dikkat çekici turuncu renk */
+}
+
+.term-container strong{
+    font-size:25px;
+}
+
+.terms-list li strong{
+    text-align: center; /* Yazıyı yatayda ortalar */
+    margin-bottom: 30px; /* Altına boşluk bırakır */
+    color: #ff7300; /* Dikkat çekici turuncu renk */
+    font-size: 25px;
+}
+
+/* Paragraflar ve listeler */
+p, li {
+    font-size: 1.1em; /* Varsayılan yazı boyutu biraz arttırıldı */
+    line-height: 1.8; /* Satır aralığı daha fazla */
+}
+
+
+/* Highlight Class */
+.highlight {
+    box-shadow: 0 0 10px #ff7300; /* Turuncu renkte ışıltı efekti */
+    transition: box-shadow 0.5s, background-color 0.5s; /* Geçiş efektleri */
+    background-color: rgba(255, 115, 0, 0.1); /* Hafif turuncu arka plan rengi */
+    border: 2px solid #ff7300; /* Turuncu kenarlık */
+    padding: 10px; /* Kenarlık için iç boşluk */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+}
+
+
+/* Main Content Style */
+main {
+    flex: 1; /* Ana içerik alanı genişler */
+    padding: 20px; /* İçerik için padding */
+}
+
+main h1{
+    font-size: 45px;
+}
+
+main h3{
+    font-size: 35px;
+    margin-top: 40px;
+}
+
+/* Container Style */
+.container {
+    display: flex; /* Flexbox kullanarak yan yana yerleşim */
+    max-width: 1400px; /* Maksimum genişlik */
+    margin: 20px auto; /* Ortada konumlandırma */
+}
+
+/* Sidebar Menu Styles */
+.sidebar {
+    flex: 0 0 250px; /* Sidebar genişliği ayarlanıyor */
+    background-color: #1f1f1f; /* Koyu gri arka plan */
+    border-radius: 8px; /* Yuvarlatılmış köşeler */
+    padding: 15px; /* İçerik için padding */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); /* Yumuşak gölge efekti */
+}
+
+/* Sidebar Links */
+.sidebar-links {
+    list-style-type: none; /* Varsayılan madde işaretlerini kaldır */
+    padding: 0; /* Padding kaldırıldı */
+    margin: 0; /* Margin kaldırıldı */
+}
+
+.sidebar-links li {
+    margin: 10px 0; /* Öğeler arasında boşluk */
+}
+
+.sidebar-links a {
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: #f0f0f0; /* Açık metin rengi */
+    display: block; /* Tam genişlikte tıklanabilir alan */
+    padding: 10px; /* Bağlantı içi padding eklendi */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    transition: background-color 0.3s, color 0.3s; /* Geçiş efektleri */
+}
+
+.sidebar-links a:hover {
+    background-color: #ff7f50; /* Hover durumunda arka plan rengi turuncu */
+    color: black; /* Hover durumunda metin rengi siyah */
+}
+
+/* Sidebar Header Styles */
+.sidebar h3 {
+    font-size: 1.5em; /* Başlık boyutu */
+    margin-bottom: 15px; /* Başlık altında boşluk */
+    color: #ff7f50; /* Turuncu başlık rengi */
+    text-align: center; /* Başlık ortalanır */
+}
+
+/* Term Container */
+.term-container {
+    display: flex;
+    flex-direction: column; /* Öğeleri dikey sıraya dizer */
+    align-items: center; /* Tüm öğeleri yatayda ortalar */
+}
+
+/* Görseller */
+.term-container img,
+.term-image,
+.text-image-wrapper img {
+    display: block; /* Varsayılan inline element özelliklerini kaldırır */
+    max-width: 80%; /* Görüntünün taşmasını önlemek için genişlik sınırı */
+    height: auto; /* Yüksekliği otomatik ayarlar */
+    margin: 10px 0; /* Üst ve alt kenar boşluğu eklemek için */
+}
+
+/* Terms List */
+.terms-list {
+    list-style-type: none; /* Liste işaretlerini kaldır */
+    padding: 0; /* Padding kaldırıldı */
+    margin: 0; /* Margin kaldırıldı */
+}
+
+.terms-list li {
+    display: flex;
+    flex-direction: column; /* İçeriği dikey sıralamak için */
+    align-items: center; /* İçeriği yatayda ortalar */
+    margin-bottom: 50px; /* Her li arasında boşluk */
+    text-align: center; /* İçeriği ortalar */
+}
+
+/* Text and Image Alignment */
+.text-image-wrapper {
+    display: flex;
+    justify-content: center; /* strong ve img öğelerini yatayda ortalar */
+    align-items: center; /* strong ve img'yi dikey olarak ortalar */
+    width: 100%; /* Wrapper'ı tam genişlikte tutar */
+}
+
+.text-image-wrapper strong {
+    flex-shrink: 0; /* strong'un sadece kendi genişliği kadar yer kaplamasını sağlar */
+    margin: 10px; /* strong ile img arasında biraz boşluk bırakır */
+}
+
+.text-image-wrapper img {
+    width: 50%; /* Resmin taşmasını engeller ve responsive olmasını sağlar */
+    margin: auto; /* Resmi sağa yaslar */
+}
+
+.image-caption {
+    text-align: center; /* p öğesini ortalar */
+    margin-top: 10px; /* Üstten biraz boşluk bırakır */
+}
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px; /* Sayfanın alt kısmından 20px yukarı */
+    right: 20px; /* Sayfanın sağ kısmından 20px içeride */
+    background-color: #ff7300; /* Arka plan rengi */
+    color: white; /* Yazı rengi */
+    border: none; /* Kenarlık yok */
+    border-radius: 50%; /* Yuvarlak köşeler */
+    width: 50px; /* Genişlik */
+    height: 50px; /* Yükseklik */
+    display: flex; /* İçeriği ortalamak için */
+    justify-content: center; /* Yatayda ortala */
+    align-items: center; /* Dikeyde ortala */
+    font-size: 24px; /* Yazı boyutu */
+    cursor: pointer; /* Fare ile üstüne gelince el simgesi */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Gölge efekti */
+    transition: background-color 0.3s; /* Hover efekti için geçiş */
+}
+
+.scroll-to-top:hover {
+    background-color: #e06300; /* Hover durumunda arka plan rengi */
+}

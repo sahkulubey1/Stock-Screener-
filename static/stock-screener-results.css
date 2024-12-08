@@ -1,0 +1,71 @@
+/* STOCK SCREENER RESULTS CSS */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #161b22;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1.results-title { /* Belirgin bir başlık için sınıf eklendi */
+    text-align: center;
+    color: #ff7300; /* Turuncu tema */
+    font-size: 32px;
+}
+
+/* Tablo stili */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #ff7300; /* Turuncu arka plan */
+    color: #0d1117; /* Siyah yazı */
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+table tr:hover {
+    background-color: #252b34; /* Hover efekti */
+}
+
+/* A bağlantıları */
+.results-link { /* Spesifik bağlantı sınıfı eklendi */
+    color: #ff7300;
+    text-decoration: none;
+}
+
+.results-link:hover {
+    text-decoration: underline;
+}
+
+.results-link:active {
+    color: #e56200;
+}
+
+.back-button {
+    display: inline-block; /* Dışarıda bir boşluk yaratır */
+    padding: 12px 20px; /* Butonun içindeki yazı için alan */
+    background-color: #ff7300; /* Turuncu arka plan */
+    color: white; /* Beyaz yazı rengi */
+    font-size: 1rem; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    text-align: center; /* Metni ortalar */
+    text-decoration: none; /* Alt çizgi kaldırır */
+    transition: background-color 0.3s, transform 0.2s; /* Geçiş efektleri */
+    margin-top: 20px; /* Üstten boşluk */
+}
+
+.back-button:hover {
+    background-color: #e56200;
+    color: white;
+    transform: translateY(-2px); /* Yukarı hareket efekti */
+}

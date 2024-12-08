@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+
+<header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="{{ url_for('stock_search') }}"><img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="logo"></a>
+                <a href="{{ url_for('stock_search') }}" class="nav-title">Stock Screener</a>
+            </div>
+            <div class="menu-container">
+                <a href="{{ url_for('stock_search') }}" class="menu-item">Stock Search</a>
+                <a href="{{ url_for('index') }}" class="menu-item">Stock Screener</a>
+                <a href="{{ url_for('learn_more') }}" class="menu-item">Learn More</a>
+            </div>
+            {% include 'partials/logout.html' %}
+        </nav>
+    </header>
+
+    <div class="flashes-2">
+        {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="profile-container">
+        <h1>Edit Profile</h1>
+        <form method="POST" action="/profile/update">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ user['username'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="join-date">Join Date</label>
+                <input type="text" id="join-date" name="join_date" value="{{ user['created_at'] }}" readonly>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="save-btn">Save Changes</button>
+                <button type="button" class="reset-password-btn" onclick="showResetPasswordPopup()">Reset Password</button>
+            </div>
+                <a class="back-link" href="{{ url_for('stock_search') }}">Go Back</a>
+
+        </form>
+    </div>
+
+    <!-- Reset Password Popup -->
+    <div class="popup-overlay" id="reset-password-popup">
+        <div class="popup-content">
+            <h2>Reset Password</h2>
+            <form method="POST" action="/profile/reset_password">
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new_password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm_password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <button class="close-btn" onclick="closeResetPasswordPopup()">Cancel</button>
+        </div>
+    </div>
+
+      <footer>
+        <div class="footer-social">
+            <span>©2024 Stock Screener</span>
+        </div>
+    </footer>
+
+    <script>
+        function showResetPasswordPopup() {
+            document.getElementById('reset-password-popup').style.display = 'flex';
+        }
+
+        function closeResetPasswordPopup() {
+            document.getElementById('reset-password-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

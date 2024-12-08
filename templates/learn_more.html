@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definitions with Sidebar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='definations.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='image/icon.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="{{ url_for('stock_search') }}">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="logo">
+            </a>
+            <a href="{{ url_for('stock_search') }}" class="nav-title">Stock Screener</a>
+        </div>
+        <div class="menu-container">
+            <a href="{{ url_for('stock_search') }}" class="menu-item">Stock Search</a>
+            <a href="{{ url_for('index') }}" class="menu-item">Stock Screener</a>
+            <a href="{{ url_for('learn_more') }}" class="menu-item">Learn More</a>
+        </div>
+        {% include 'partials/logout.html' %}
+    </nav>
+</header>
+
+<div class="container">
+    <!-- Sidebar Menu -->
+    <nav class="sidebar">
+        <h3>Table of Contents</h3>
+        <ul class="sidebar-links">
+            <li><a href="#stock-overview">Stock Overview</a></li>
+            <li><a href="#price-chart">Charts</a></li>
+            <li><a href="#technical-indicators">Technical Indicators</a></li>
+            <li><a href="#performance-metrics">Performance Metrics</a></li>
+            <li><a href="#others">Others</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Stock Terms and Meanings</h1>
+        <div id="stock-overview">
+            <h3>Stock Overview</h3>
+            <hr> <br>
+            <ul class="terms-list">
+                <li id="market-cap"><strong>Market Cap</strong> Market cap, or market capitalization, is one way of measuring a company's total value, based on outstanding shares of stock. A company's market cap will fluctuate with its share price. Investors can use market cap to gauge public interest and company strength.
+                    <br>
+                    <br>
+                    Market Cap = Share Price × Total Number of Outstanding Shares  </li>
+                <li id="pe-ratio"><strong>P/E Ratio</strong> The P/E ratio is calculated by dividing the market value price per share by the company's earnings per share (EPS). A high P/E ratio can mean that a stock's price is high relative to earnings and possibly overvalued. A low P/E ratio might indicate that the current stock price is low relative to earnings.</li>
+                <li id="dividend-yield"><strong>Dividend Yield</strong> is a financial metric that expresses the annual dividend payments of a stock as a percentage of its current market price. In other words, it indicates how much income an investor can expect to earn from a stock in the form of dividends relative to the stock's price.</li>
+                <li id="volume"><strong>Volume</strong> Volume is the overall number of shares or contracts traded within a security or market in a specific period. It has been seen as an indication of market activities and liquidity, whereby high volumes can signify more interest in a security, which may prompt greater movement in its prices. Traders normally use volume along with price trends to confirm the state of trends or possible reversals in trends.</li>
+                <li id="change-percent"><strong>Change (%)</strong>refers to the percent change of a stock or other investment price over some period of time. This measure will give an investor a quick sense of the movement in price and is commonly calculated for a daily, weekly, or yearly period of time.
+                    For example, if the price of an underlying stock increases from 100 $ to 110 $ within one day, then the stock has increased 10%.                    The Change (%) formula allows investors to better understand price fluctuations and make more informed decisions about their investments. Large percentage changes usually imply high volatility and risks, while for small percentage changes, there are less volatile movements in prices. </li>
+            </ul>
+        </div>
+
+        <div id="price-chart">
+            <br><br>
+            <h3>Price Chart</h3>
+            <hr> <br>
+            <div class="term-container">
+                <img src="{{ url_for('static', filename='image/chart.png') }}" alt="Price Chart" class="term-image">
+                <p class="image-caption">A price chart visually presents the historical movements in the price of a security over time and helps in viewing trends, patterns, and possible levels of prices. Charts used to study the price come in many types: line charts, bar charts, and candlestick charts. Traders and investors refer to the price chart to make decisions about visualized market behavior, and also upon technical analysis studies using indicators.</p>
+            </div>
+            <div class="term-container" id="rsi">
+                <strong>RSI</strong>
+                <img src="{{ url_for('static', filename='image/rsi.png') }}" alt="Rsi" class="term-image">
+                <p class="image-caption">
+                    The Relative Strength Index (RSI) is a momentum oscillator that measures the speed and change of price movements, indicating overbought or oversold conditions in a market. The RSI ranges from 0 to 100, with readings above 70 typically suggesting that an asset is overbought and readings below 30 indicating that it is oversold. Traders use the RSI to identify potential reversal points and confirm trends.
+                    Calculation**:
+                    RSI = 100 - [100 / (1 + RS)]
+                    where RS (Relative Strength) = Average Gain / Average Loss over a specified period (usually 14 days)
+                </p>
+            </div>
+
+            <div class="term-container" id="macd">
+                <strong>MACD</strong>
+                <img src="{{ url_for('static', filename='image/macd.png') }}" alt="macd" class="term-image">
+                <p class="image-caption">
+                    A MACD chart visualizes the Moving Average Convergence Divergence (MACD) indicator, showing the relationship between two moving averages of a security's price over time. It typically consists of the MACD line, the signal line, and a histogram that represents the difference between the MACD line and the signal line. Traders use the MACD chart to identify potential buy and sell signals, as well as to assess momentum and trend direction.
+                </p>
+            </div>
+            <div class="term-container" id="fibonacci">
+                <strong>Fibonacci</strong>
+                <img src="{{ url_for('static', filename='image/fibonacci.png') }}" alt="fibonacci" class="term-image">
+                <p class="image-caption">
+                    A Fibonacci Chart is a technical analysis tool that uses Fibonacci retracement levels to identify potential pullback or support/resistance points during specific price movements. Fibonacci is a mathematical sequence of numbers where each number is the sum of the two preceding ones. Traders use the numbers in this sequence to determine natural cycles and correction levels in the markets.
+                   <br><br> Example
+
+                   Let’s say a stock rises from $100 to $150. The Fibonacci levels can be calculated as follows:
+
+                   High Price: $150
+                   Low Price: $100
+                   Fibonacci Level Calculations:
+                   23.6% Retracement: $150 - (($150 - $100) * 0.236) = $143.40
+                   38.2% Retracement: $150 - (($150 - $100) * 0.382) = $141.00
+                   50% Retracement: $150 - (($150 - $100) * 0.5) = $125.00
+                   61.8% Retracement: $150 - (($150 - $100) * 0.618) = $128.90
+                   When these levels are plotted on the chart, traders can use them as support and resistance. For example, if the stock price drops to $143.40, they might see this as a buying opportunity.
+            </div>
+
+        </div>
+
+
+
+        <div id="technical-indicators">
+            <br><br>
+            <h3>Technical Indicators</h3>
+            <hr> <br>
+            <ul class="terms-list">
+                <li id="sma"><strong>SMA (20)</strong> SMA is a commonly used technical analysis tool in financial markets. The Simple Moving Average calculates the average of prices over a specific time period to help determine market trends. It is typically used to track how the closing prices of a stock or other assets change over time. SMA provides investors with information about price movements, aiding in making buy and sell decisions.
+
+                    SMA is often utilized by investors to identify trend direction, generate buy and sell signals, and smooth out market fluctuations. Short-term SMAs track more price volatility, while long-term SMAs react more slowly and reflect longer-term trends.
+
+                    <br><br>How is SMA Calculated?
+                    The calculation of SMA involves summing the closing prices over a specific period and dividing that total by the number of days within that period. For instance, to calculate a 10-day SMA, the closing prices for the last 10 days are summed and then divided by 10. This calculation is updated daily, creating a continuous SMA line.</li>
+                <li id="bollinger-high"><strong>Bollinger Bands (High)</strong> Bollinger Bands (High) indicates the upper boundary of a stock's price over a specified period. When the price approaches this upper band, it may suggest that the stock is in an overbought condition. The calculation is as follows: First, the Middle Band (SMA) is calculated as the simple moving average of closing prices over a specific period (typically 20 days); this is the total prices divided by n (where n is the total number of days in the period). Second, Standard Deviation measures how much the prices deviate from the middle band; this calculation is done using the formula for the sum of squared differences from the middle band divided by n. Finally, Bollinger Bands (High) is calculated by adding a certain multiple of the standard deviation (typically 2 times) to the middle band; this is expressed as Middle Band plus (2 × Standard Deviation).</li>
+                <li id="bollinger-low"><strong>Bollinger Bands (Low)</strong> Bollinger Bands (Low)
+                    Bollinger Bands is a technical analysis tool used to measure market volatility and understand whether price movements remain within a limited range. This indicator consists of a band system created by two standard deviation lines around a simple moving average (SMA).
+
+                    Bollinger Bands (Low) represents the lower band of the Bollinger Bands system. This lower band is placed two standard deviations below the SMA for a specific time period. The meaning of the lower band is that there is a high probability of prices dropping below this level within a certain time frame. Generally, when prices approach the lower band, it indicates an oversold condition, which can be seen as a potential buying opportunity.
+
+                   <br><br> Areas of Use
+                    Oversold and Overbought Analysis: When prices approach the Bollinger Bands (Low) line, it may indicate that there are oversold conditions. Investors can buy in anticipation that prices will rebound from this level.
+
+                    Volatility Measurement: The width of the bands indicates market volatility. When the bands widen, it signifies higher volatility; when they narrow, it indicates reduced volatility.
+
+                    Trend Detection: When prices break out of the bands, it may indicate the beginning of a new trend. If prices reach the upper band, it may signal overbought conditions; if they reach the lower band, it may signal oversold conditions.</li>
+
+
+                    <li id="tenkan-sen"><strong>Ichimoku Cloud (Tenkan-sen)</strong> Tenkan-sen is a component of the Ichimoku Cloud technical analysis system, which helps track short-term price movements. It is typically calculated as the average of the highest and lowest closing prices over a period of 9 periods (days, weeks, or months).
+
+                    Tenkan-sen indicates the current status of prices and helps determine the short-term trend in the market. It reflects how prices have moved over a certain time frame and aids in understanding market trends.
+
+                    Areas of Use
+                    Trend Detection: Tenkan-sen shows the short-term trend of the market. If prices are above the Tenkan-sen, it is generally interpreted as a bullish trend; if below, a bearish trend.
+
+                    Buy and Sell Signals: When prices rise above the Tenkan-sen, it generates a buy signal; when they fall below, it generates a sell signal.
+
+                    Support and Resistance Levels: Tenkan-sen can help identify potential support and resistance levels. Price movements testing this line may result in reversals. </li>
+
+                    <li id="kijun-sen"><strong>Ichimoku Cloud (Kijun-sen)</strong> Kijun-sen is another important component of the Ichimoku Cloud and is generally calculated over a longer duration (14 periods). Kijun-sen is the average of the highest and lowest closing prices over a specific period, making it slower to react.
+
+                        Kijun-sen assists in determining the overall direction and strength of the market trend. When used together with Tenkan-sen, it allows for a better understanding of market trends.
+
+                        Areas of Use
+                        Trend Detection: Kijun-sen shows the medium-term direction of the market. If prices are above the Kijun-sen, it indicates a bullish trend; if below, a bearish trend.
+
+                        <br> <br>Buy and Sell Signals: Kijun-sen generates a buy signal when prices rise above it and a sell signal when they fall below it.
+
+                        Support and Resistance Levels: Kijun-sen can act as potential support or resistance levels, where price movements may reverse upon testing these levels.</li>
+
+                    <li id="senkou-span-a"><strong>Ichimoku Cloud (Senkou Span A)</strong> Senkou Span B is another component of the Ichimoku Cloud and is calculated as the average of the highest and lowest closing prices over a specific period (typically 52 periods). Senkou Span B, along with Senkou Span A, forms the "cloud" in the Ichimoku Cloud system.
+                        Senkou Span B helps in understanding the direction and trend of the market and aids in determining support and resistance levels.
+                        <br><br>Areas of Use
+                        Cloud Representation: If prices are above Senkou Span B, it is generally interpreted as a bullish signal. If below, it is considered a bearish signal.
+                        Support and Resistance Analysis: Senkou Span B plays a crucial role in identifying potential support and resistance levels.
+                        Trading Strategies: The influence of Senkou Span B on price can guide investors in making buy and sell decisions.</li>
+
+                    <li id="senkou-span-b"><strong>Ichimoku Cloud (Senkou Span B)</strong>
+                        Senkou Span B is a part of the Ichimoku Cloud analysis and plays a crucial role in determining market trends. The primary objective of this indicator is to predict where prices will be within a specific time frame and to forecast future support or resistance levels. Senkou Span B is typically calculated based on 52 periods, averaging the high and low prices used in the calculation. As a result, Senkou Span B provides traders with a better perspective on the market by forecasting the likely price positions over a set duration.
+                    <br>Another important aspect of Senkou Span B is the thickness of the cloud in which it is placed. If Senkou Span B is above the prices, it is generally interpreted as a selling signal, while if it is below, it is seen as a buying signal. Additionally, the distance between Senkou Span B and Senkou Span A indicates market volatility; a wider cloud signals higher volatility. This helps traders in determining their positions and managing risks. Lastly, Senkou Span B is often used to identify support and resistance levels. If the price approaches or falls below Senkou Span B, it suggests a downward trend in the market, while remaining above it indicates an upward trend, signaling that this level may act as a support point</li>
+            </ul>
+        </div>
+
+        <div id="performance-metrics">
+            <br><br>
+            <h3>Performance Metrics</h3>
+            <hr> <br>
+            <ul class="terms-list">
+                <li id="available-shares"><strong>Available Shares</strong> refers to the number of shares of a company that are available for trading on the stock market. This term generally denotes the shares that are publicly traded and can be purchased by investors. Available Shares represent the portion of the total shares of the company that are not reserved for specific situations (e.g., shares set aside for executives or employees). This allows investors to assess the liquidity and market depth of a stock; a higher number of shares typically means higher liquidity, making buying and selling transactions easier to execute.</li>
+                <li id="week-high"><strong>52-Week High</strong>  The 52-Week High is the highest price level reached by a stock or financial instrument within the last 52 weeks (approximately one year). This indicator provides investors with information about the historical performance of an asset and can help them assess market trends.  </li>
+                <li id="week-low"><strong>52-Week Low</strong> The 52-Week Low is the lowest price level reached by a stock or financial instrument within the last 52 weeks (approximately one year). This indicator provides investors with information about the historical performance of an asset and can help them assess market trends.  </li>
+                <li id="daily-return"><strong>Daily Return</strong>refers to the percentage change in the price of an asset (typically a stock) over a specific day. This metric helps investors evaluate the daily performance of an asset. Daily Return is calculated as the percentage difference between the previous day's closing price and today's closing price. High daily return rates indicate that the asset performed strongly on that day, while low rates suggest weak performance. This metric allows investors to understand price fluctuations and enables them to develop daily trading strategies. </li>
+                <li id="historical-volatility"><strong>Historical Volatility</strong>  is a financial metric that measures how much the price of an asset (typically a stock) has fluctuated over a specific period in the past. This indicator expresses the degree of price variability and is usually represented as a percentage.</li>
+                <li id="beta"><strong>Beta</strong>is a financial metric that measures the sensitivity of a stock or investment to overall market fluctuations. A beta value of 1 indicates that the stock will move in line with the market, while a beta greater than 1 indicates that the stock will experience more volatility compared to the market average. For instance, a stock with a beta of 1.5 might rise by 1.5% when the market rises by 1% or fall by 1.5% when the market drops by 1%. Conversely, stocks with a beta less than 1 are less sensitive to market fluctuations, which may indicate lower risk. Investors use beta to assess the risk levels in their portfolios and to select stocks based on market conditions.</li>
+                <li id="analyst-rating"><strong>Analyst Rating</strong> Refers to the evaluations made by financial analysts regarding a stock or company. These assessments typically include predictions and recommendations about the future performance of the stock. Analyst Ratings are usually categorized into three main categories: "Buy," "Hold," and "Sell." The "Buy" rating indicates that the analyst believes the stock's value will increase, while "Hold" suggests that the current situation is expected to continue. The "Sell" rating serves as a warning that the stock may lose value. Analysts consider financial analysis, the company's financial condition, industry trends, and economic conditions when making these ratings. Investors can use these ratings as a basis for making investment decisions.</li>
+            </ul>
+        </div>
+
+        <div id="Others">
+            <h3>Others</h3>
+            <hr> <br>
+            <ul class="terms-list">
+                <li id="market-sentiment"><strong>Market Sentiment</strong> Market sentiment can be influenced by various factors, including economic data, news, investor expectations, and the overall market environment. It can affect investors' behavior, which in turn can drive market movements. For instance, positive economic data or favorable company news can enhance investors' confidence and bolster positive sentiment.
+
+                    Examples
+                    Positive Market Sentiment Example:
+
+                    Economic Data: When a country’s employment data comes in better than expected, it can lead investors to develop a more optimistic view of the economy. For example, if the unemployment rate in the U.S. drops to 3%, this situation may lead investors to believe the economy is strengthening, thus increasing stock purchases and driving prices up.
+
+                    Company News: The launch of a new and innovative product by a technology company can heighten investor interest in that company. For example, if Apple releases a new iPhone model, investors may start buying its stock, resulting in a rise in share prices.</li>
+                <li id="score"><strong>Score</strong> Score is a term used in many different contexts, generally meaning "point" or "score." It refers to a numerical value obtained by an object, individual, or performance based on specific criteria or standards within a particular evaluation or measurement system. Below is an explanation of the meaning of "score," its areas of use, and detailed descriptions.</li>
+            </ul>
+        </div>
+    </main>
+</div>
+<div class="scroll-to-top" id="scrollToTop" style="display: none;">
+    ↑
+</div>
+
+
+<footer>
+    <p>© 2024 Stock Screener. All Rights Reserved.</p>
+</footer>
+
+<script>
+    window.onload = function() {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+                targetElement.classList.add("highlight");
+
+                // 5 saniye sonra highlight sınıfını kaldır
+                setTimeout(function() {
+                    targetElement.classList.remove("highlight");
+                }, 5000); // 5000 milisaniye (5 saniye)
+            }
+        }
+
+        // Sidebar bağlantılarına tıklama olayı ekleyin
+        const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Default tıklama işlemini engelle
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    targetElement.classList.add('highlight');
+
+                    // 5 saniye sonra highlight sınıfını kaldır
+                    setTimeout(function() {
+                        targetElement.classList.remove('highlight');
+                    }, 5000); // 5000 milisaniye (5 saniye)
+                }
+            });
+        });
+        window.onscroll = function() {
+        const scrollToTopButton = document.getElementById("scrollToTop");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopButton.style.display = "flex"; // Butonu göster
+        } else {
+            scrollToTopButton.style.display = "none"; // Butonu gizle
+        }
+    };
+
+    document.getElementById("scrollToTop").onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Sayfayı yukarı kaydır
+    };
+        };
+</script>
+
+</body>
+</html>

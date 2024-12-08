@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Screener Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stock-screener-results.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='image/icon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="{{ url_for('stock_search') }}"><img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="logo"></a>
+                <a href="{{ url_for('stock_search') }}" class="nav-title">Stock Screener</a>
+            </div>
+            <div class="menu-container">
+                <a href="{{ url_for('stock_search') }}" class="menu-item">Stock Search</a>
+                <a href="{{ url_for('index') }}" class="menu-item">Stock Screener</a>
+                <a href="{{ url_for('learn_more') }}" class="menu-item">Learn More</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="results-title">Stock Screener Results - TOP 10</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th> Score (Logarithmic normalization)<a href="{{ url_for('learn_more') }}#score" style="color:#545454;" title="Click me to learn more" class="info-link">    ?</a></th>
+                    <th>  Market Sentiment (Percentage - 50% is natural)<a href="{{ url_for('learn_more') }}#market-sentiment" style="color:#545454;" title="Click me to learn more" class="info-link">  ?</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticker, score, market_sentiment in stocks %}
+                    <tr>
+                        <td>
+                             <a href="{{ url_for('stock_details', ticker=ticker) }}" onclick="delayRedirect('{{ ticker }}', event);">{{ ticker }}</a>
+                        </td>
+                        <td>{{ score | round(3) }}</td>
+                        <td>{{ market_sentiment | round(3) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="back-button" href="{{ url_for('index') }}">Go Back</a>
+    </div>
+</body>
+
+    <script>
+        function delayRedirect(ticker, event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const originalText = link.textContent;
+            link.style.pointerEvents = 'none';
+            link.textContent = "Loading...";
+
+            setTimeout(() => {
+                window.open(link.href, '_blank');
+                link.textContent = originalText;
+                link.style.pointerEvents = 'auto';
+            }, 1500);
+        }
+    </script>
+
+
+</html>
